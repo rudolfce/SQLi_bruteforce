@@ -1,4 +1,4 @@
-# SQLi bruteforce for Natas15 with mechanize/Python #
+# SQLi bruteforce for Natas15 with ~~mechanize~~ requests/Python #
 
 Natas wargames can be found in [this link](http://overthewire.org/wargames/natas/).
 To clean my conscience, I censored the password. Come on, you can beat Natas14.
